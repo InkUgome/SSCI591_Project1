@@ -10,16 +10,15 @@
    ===================================================================== */
 
 
-/* --- 1. THE NUMBERS I CARE ABOUT --------------------------------------
-   Latitude first, then longitude. Change HOME to your own hometown —
-   right-click any spot on openstreetmap.org and choose "Show address"
-   to read its coordinates. */
+/* --- 1. Location --------------------------------------
+   Latitude first, then longitude.  */
 
 const USC  = [34.0224, -118.2851];   // USC campus, Los Angeles
 const HOME = [22.5431, 114.0579];   // Shenzhen, China
+const CATALINA = [33.3879, -118.4163]; // Catalina Island, Los Angeles
 
 
-/* --- 2. BUILD THE MAP (same as step 4) -------------------------------- */
+/* --- 2. Build the Map  -------------------------------- */
 
 const map = L.map("map").setView(USC, 13);
 
@@ -30,31 +29,37 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 L.marker(USC).addTo(map).bindPopup("I am studying here.");
 L.marker(HOME).addTo(map).bindPopup("I am from here.");
+L.marker(CATALINA).addTo(map).bindPopup("Catalina Island GNSS Project");
 
 
-/* --- 3. FIND the three things on the page I need to work with ----------
-   "document" means the web page itself.
-   getElementById("home-button") means: go into the page, find the one
-   element labelled home-button, and hand it to me.
-
-   Note the capital letters: getElementById. Capital E, capital I,
-   capital d. JavaScript is case sensitive, and if you type
-   getelementbyid it fails SILENTLY. This costs beginners a whole evening. */
+/* --- 3. Get the map buttons and status text---------- */
 
 const homeButton = document.getElementById("home-button");
 const uscButton  = document.getElementById("usc-button");
 const status     = document.getElementById("status");
+const catalinaButton = document.getElementById("catalina-button");
 
 
-/* --- 4. LISTEN for a click, then CHANGE things ------------------------
-   addEventListener says: "when this thing happens, run this code."
-   The code between the braces does not run now. It waits. It runs later,
-   every time somebody clicks. That idea — code that waits for an event —
-   is the heart of every interactive page you have ever used. */
+L.polyline([HOME, USC], {
+  color: "#990000",
+  weight: 3,
+  opacity: 0.8,
+  dashArray: "8, 8"
+}).addTo(map);
+
+L.polyline([USC, CATALINA], {
+  color: "#990000",
+  weight: 3,
+  opacity: 0.8
+}).addTo(map);
+
+
+
+/* --- 4. Button created */
 
 homeButton.addEventListener("click", function () {
-  map.flyTo(HOME, 11);                       // CHANGE the map
-  status.textContent = "Flying home...";     // CHANGE the text
+  map.flyTo(HOME, 11);                       
+  status.textContent = "Flying home...";     
 });
 
 
@@ -62,6 +67,20 @@ uscButton.addEventListener("click", function () {
   map.flyTo(USC, 13);
   status.textContent = "Back on campus.";
 });
+
+catalinaButton.addEventListener("click", function () {
+  map.flyTo(CATALINA, 11);
+  status.textContent = "Viewing my Catalina Island project.";
+});
+
+L.marker(CATALINA)
+  .addTo(map)
+  .bindPopup(
+    '<b>Catalina Island GNSS Project</b><br>' +
+    '<a href="https://storymaps.arcgis.com/stories/3ba7a102f54042ffa2325b62b083f669" target="_blank">' +
+    'View StoryMap →</a>'
+  );
+
 
 /* --- 5. BIRD EXPLORER ----------------------------------------------- */
 
@@ -130,10 +149,7 @@ function showRandomBird() {
 
 birdButton.addEventListener("click", showRandomBird);
 loadBirds();
+
 /* =====================================================================
    THAT IS THE WHOLE PROGRAM. Roughly fifteen real lines.
-
-   If something does not work, do NOT stare at the code and hope.
-   Press F12 to open the browser's developer tools, click Console,
-   and read the red message. It names the problem and the line number.
    ===================================================================== */
