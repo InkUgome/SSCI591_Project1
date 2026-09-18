@@ -1,4 +1,4 @@
-# SSCI591_Project1
+
 # SSCI 591 Project 1
 
 
