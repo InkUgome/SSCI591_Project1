@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Xingtong Yao | SSCI 591</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+
+<body>
+
+  <!-- ================= NAVIGATION ================= -->
+
+  <nav class="navbar">
+
+    <a class="nav-name" href="#">Xingtong Yao</a>
+
+    <div class="nav-links">
+      <a href="#background">Background</a>
+      <a href="#projects">Work</a>
+      <a href="#birds">Birds</a>
+      <a href="#map-section">Map</a>
+    </div>
+
+  </nav>
+
+
+  <main>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+      <div class="hero-text">
+
+        <p class="hero-label">
+          GIS · SPATIAL DATA · WEB MAPPING
+        </p>
+
+        <h1>Hi, I'm Xingtong.</h1>
+
+        <p class="hero-intro">
+          I'm a master's student in GIST at USC with a background in data science.
+          I'm interested in spatial analysis, mapping, and interactive geospatial applications.
+        </p>
+
+        <a href="#projects" class="hero-button">
+          View my work
+        </a>
+
+      </div>
+
+
+      <div class="hero-image">
+        <img
+          src="image/photo.jpeg"
+          alt="Portrait of Xingtong Yao"
+        >
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= BACKGROUND ================= -->
+
+    <section class="background-section" id="background">
+
+      <h2 class="section-title">Background</h2>
+
+      <h3 class="background-subtitle">
+        From Data Science to GIS
+      </h3>
+
+      <p class="background-intro">
+        My undergraduate background is in data science, and I am currently
+        pursuing my master's degree in Geographic Information Science and
+        Technology at USC. My work has gradually expanded from data analysis
+        and programming to spatial analysis, field data collection, remote
+        sensing, and web mapping.
+      </p>
+
+
+      <div class="education-row">
+
+        <div class="education-item">
+
+          <span>2025 — 2027</span>
+
+          <h3>
+            University of Southern California
+          </h3>
+
+          <p>
+            M.S. Geographic Information Science & Technology
+          </p>
+
+        </div>
+
+
+        <div class="education-item">
+
+          <span>2024</span>
+
+          <h3>
+            The Chinese University of Hong Kong
+          </h3>
+
+          <p>
+            B.S. Data Science and Big Data Technology
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+    
+
+    <!-- ================= SKILLS ================= -->
+
+    <section class="skills-section">
+
+    <h2 class="section-title">Tools & Skills</h2>
+
+    <p class="skills-intro">
+      Tools and methods I have used in coursework and GIS projects.
+    </p>
+
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h3>GIS & Mapping</h3>
+        <p>ArcGIS Pro</p>
+        <p>Leaflet</p>
+        <p>Web Mapping</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <p>Python</p>
+        <p>SQL</p>
+        <p>HTML · CSS · JavaScript</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Spatial Analysis</h3>
+        <p>Remote Sensing</p>
+        <p>Raster Analysis</p>
+        <p>Spatial Databases</p>
+      </div>
+
+      <div class="skill-group">
+        <h3>Data Collection</h3>
+        <p>GNSS / GPS</p>
+        <p>UAS Imagery</p>
+        <p>Field Data Collection</p>
+      </div>
+
+    </div>
+
+  </section>
+
+    <!-- ================= FEATURED PROJECT ================= -->
+
+    <section id="projects">
+
+      <h2 class="section-title">Featured Project</h2>
+
+      <div class="project-card">
+
+        <div class="project-photo">
+
+          <img
+            src="image/catalina.jpeg"
+            alt="GNSS field data collection on Catalina Island"
+          >
+
+        </div>
+
+
+        <div class="project-info">
+
+          <h3>
+            Catalina Island GNSS Elevation Analysis
+          </h3>
+
+          <p>
+            This project used field-collected GNSS measurements from
+            Catalina Island and a 1-meter USGS DEM to compare elevation accuracy.
+          </p>
+
+          <p class="project-skills">
+            GNSS · DEM · ArcGIS Pro · 3D Visualization
+          </p>
+
+          <a
+            class="project-link"
+            href="https://storymaps.arcgis.com/stories/3ba7a102f54042ffa2325b62b083f669"
+            target="_blank"
+          >
+            View StoryMap →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= BIRD EXPLORER ================= -->
+
+    <section id="birds">
+
+      <h2 class="section-title">
+        Birds Around Los Angeles
+      </h2>
+
+      <p class="bird-description">
+        Discover birds that have been observed around Los Angeles using iNaturalist data.
+      </p>
+
+
+      <div class="bird-card">
+
+        <div class="bird-photo">
+
+          <img
+            id="bird-image"
+            src="image/bird_placeholder.png"
+            alt="Bird silhouette"
+            class="placeholder"
+          >
+
+        </div>
+
+
+        <div class="bird-info">
+
+          <p class="bird-label">
+            Bird Observation
+          </p>
+
+          <h3 id="bird-name">
+            Bird Explorer
+          </h3>
+
+          <p id="scientific-name"></p>
+
+
+          <div class="bird-details">
+
+            <p class="details-title">
+              Observation Details
+            </p>
+
+
+            <div class="detail-row">
+              <span>Observed</span>
+              <span id="bird-date">—</span>
+            </div>
+
+
+            <div class="detail-row">
+              <span>Location</span>
+              <span id="bird-location">—</span>
+            </div>
+
+
+            <div class="detail-row">
+              <span>Explored</span>
+              <span id="bird-count">0 birds</span>
+            </div>
+
+
+            <div
+              class="detail-row"
+              id="bird-source"
+              hidden
+            >
+
+              <span>Source</span>
+
+              <a
+                id="observation-link"
+                href="#"
+                target="_blank"
+              >
+                iNaturalist ↗
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <button id="bird-button">
+            Explore a random bird
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ================= MAP ================= -->
+
+    <section id="map-section">
+
+      <h2 class="section-title">
+        Where I am
+      </h2>
+
+      <div id="map"></div>
+
+      <p>
+        <button id="home-button">
+          Take me home
+        </button>
+
+        <button id="usc-button">
+          Back to USC
+        </button>
+      </p>
+
+      <p id="status">
+        Click a button and watch the map move.
+      </p>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    <p>
+      Built for SSCI 591 &mdash; Fall 2026.
+    </p>
+  </footer>
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
