@@ -1,7 +1,7 @@
 # SSCI591_Project1
 # SSCI 591 Project 1
 
-**Xingtong Yao**
+
 
 This is my Project 1 website for SSCI 591: Web & Mobile GIS at USC. I created a personal GIS portfolio to introduce my background and share some of my GIS work.
 
